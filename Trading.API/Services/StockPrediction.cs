@@ -28,13 +28,17 @@ namespace Trading.API.Services
             {
                 if (sampleDetails.Count == 0)
                 {
-                    return new { Status = "Failed", Description = "No stocks to process" };
+                    return new { Status = "Failed", Description = "No sample detail provided" };
                 }
 
                 string[] directories = Directory.GetDirectories(_configuration["exchangeRootPath"]);
                 int.TryParse(_configuration["batchSize"], out batchSize);
 
-                // Print all directory names
+                if (directories.Length == 0)
+                {
+                    return new { Status = "Failed", Description = "No exchange at given path" };
+                }
+
                 foreach (string directory in directories)
                 {
                     existingExchangeDirectories.Add(Path.GetFileName(directory));
