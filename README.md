@@ -39,7 +39,7 @@ To build and run your sample:
     dotnet run
     ```
 
-Input - "api/StockPrediction/predictStockValues" API
+Input - "api/StockPrediction/predictStockValues" Post API 
 
 [
     {
@@ -58,6 +58,28 @@ Input - "api/StockPrediction/predictStockValues" API
         "sourceType": 0
     }
 ]
+
+Request Curl: 
+
+curl --location 'https://localhost:7173/api/StockPrediction/predictStockValues' \
+--header 'Content-Type: application/json' \
+--data '[
+    {
+        "number": 1,
+        "stockExchange": 0,
+        "sourceType": 0
+    },
+    {
+        "number": 1,
+        "stockExchange": 1,
+        "sourceType": 0
+    },
+    {
+        "number": 1,
+        "stockExchange": 2,
+        "sourceType": 0
+    }
+]'
 
 Description: 
 
